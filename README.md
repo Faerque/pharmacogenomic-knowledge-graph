@@ -28,14 +28,11 @@ Please consult the Zenodo record for the dataset license, metadata, and citation
 Example download using the DOI resolver (run locally):
 
 ```bash
-# open the DOI landing page in a browser or use curl to download assets listed on Zenodo
+# open the DOI landing page in a browser to download the dataset files
 xdg-open "https://doi.org/10.5281/zenodo.17189995"
-
-# or (if Zenodo provides a direct asset URL) use curl or wget to download the archive
-curl -L -o pgx_dataset.zip "https://zenodo.org/record/17189995/files/your_dataset_filename.zip?download=1"
 ```
 
-Replace `your_dataset_filename.zip` with the actual file name(s) listed on Zenodo.
+Download the individual files (e.g., nodes.csv, edges.zip, etc.) from the Zenodo page linked above.
 
 ## Repository structure (high-level)
 
@@ -141,4 +138,3 @@ Faerque. pharmacogenomic-knowledge-graph. GitHub repository: [https://github.com
 ---
 
 Last updated: 2025-09-24
-# pharmacogenomic-knowledge-graph
