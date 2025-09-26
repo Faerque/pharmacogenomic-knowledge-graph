@@ -36,18 +36,15 @@ Download the individual files (e.g., nodes.csv, edges.zip, etc.) from the Zenodo
 
 ## Repository structure (high-level)
 
-The repository contains the following notable files and folders (these are present in the saved workspace snapshot):
+The repository snapshot contains the processed outputs, results and supporting artifacts produced during development. The interactive training notebooks used during development are not included in this public snapshot.
 
-- `kg-pgx-training (2).ipynb` — Notebook containing model training experiments and related analyses.
-- `processsing_data_v2.ipynb` — Data processing and graph construction notebook (prepares inputs for training and evaluation).
-- `Topk_ego_graph.ipynb` — Notebook used to generate top-k candidate lists and ego-graph visualizations for selected relations.
 - `results/` — Directory with produced artifacts and outputs:
-  - `models/` — Trained model checkpoint files (example names: `DRUG_CAUSES_ADR.pt`, `DRUG_IN_PATH.pt`, `GENE_AFFECTS_DRUG.pt`, `GENE_IN_PATH.pt`, `VAR_ASSOC_DIS.pt`).
+  - `models/` — Saved model checkpoint files (pretrained weights / saved checkpoints), for example: `DRUG_CAUSES_ADR.pt`, `DRUG_IN_PATH.pt`, `GENE_AFFECTS_DRUG.pt`, `GENE_IN_PATH.pt`, `VAR_ASSOC_DIS.pt`.
   - `topk/` — CSV files with the top-k candidate lists per relation (e.g., `DRUG_CAUSES_ADR_top200_only.csv`).
-  - `degree_features_train/` — Degree-based feature tensors used during training (files ending in `.pt`).
+  - `degree_features_train/` — Degree-based feature tensors used during training and evaluation (files ending in `.pt`).
   - `ego_graphs/` — PNG visualizations of ego-graphs for selected top predictions.
 
-Note: File names and locations reflect the current workspace snapshot and may be extended if additional experiments or outputs are produced.
+Note: this repository includes the produced artifacts and results but does not include the original interactive training notebooks. If you need the notebooks or the full processing scripts, please contact the authors or check the development branch where they may be available.
 
 ## Environment and Dependencies
 
