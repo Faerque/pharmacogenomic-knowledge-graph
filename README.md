@@ -130,6 +130,8 @@ Also cite the repository if appropriate:
 
 Faerque. pharmacogenomic-knowledge-graph. GitHub repository: [https://github.com/Faerque/pharmacogenomic-knowledge-graph](https://github.com/Faerque/pharmacogenomic-knowledge-graph)
 
+Preprint (bioRxiv): https://doi.org/10.1101/2025.09.24.25336269
+
 ## Acknowledgements and notes
 
 - This README is based on the repository snapshot and the outputs saved in `results/` observed in the workspace. If additional scripts or helper functions exist elsewhere in the project, include them in the repository root or a `src/` directory and update this README accordingly.
