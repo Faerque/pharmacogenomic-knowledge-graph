@@ -1,54 +1,39 @@
 # pharmacogenomic-knowledge-graph
 
-This repository contains the code, notebooks, intermediate outputs, trained models, and visualizations produced during the construction and analysis of a pharmacogenomic knowledge graph (PGx-KG). The work integrates pharmacogenomic entities and relations and demonstrates a workflow for dataset preprocessing, model training for relation tasks, and generation of top-k ego-graph visualizations.
+A concise snapshot describing the pharmacogenomic knowledge graph (PGx-KG) artifacts, dataset provenance, and the associated preprint describing the work. This repository stores the produced results and supporting artifacts used for analysis and dissemination.
 
-Repository name: `pharmacogenomic-knowledge-graph`
+## Summary
 
----
+This project integrates pharmacogenomic entities and relations into a knowledge graph to support relation prediction and exploratory analyses. The artifacts in this repository include saved model checkpoints, ranked candidate lists (top-k), degree-based feature tensors, and visualization outputs that demonstrate key findings.
 
-## Overview
+Key points:
+- Focus: pharmacogenomic relation prediction and ego-graph analysis.
+- Artifacts: pretrained model checkpoints, top-k candidate CSVs, degree/features tensors, and visualization images.
+- Publication: corresponding preprint describing the methods and results is available (see Citation section).
 
-This project builds and analyzes a knowledge graph in the pharmacogenomics domain. The main contributions contained in this repository are:
+## Dataset
 
-- Data processing notebooks that prepare the PGx knowledge graph inputs.
-- Training scripts and notebooks for relation prediction / graph tasks (trained model weights are included for reproducibility and demonstration).
-- Generation of top-k candidate lists and ego-graph visualizations for selected relations.
-- Saved model checkpoints and degree-based feature tensors used in downstream analyses.
+The primary dataset used to construct and analyze the PGx-KG is available from Zenodo:
 
-The included artifacts are intended to allow replication of the reported analyses and to serve as a starting point for further research on pharmacogenomic knowledge graphs.
+- Zenodo DOI: [10.5281/zenodo.17189995](https://doi.org/10.5281/zenodo.17189995)
 
-## Primary dataset
+Please consult the Zenodo landing page for license, metadata, and download instructions. Download the dataset files (for example nodes/edges tables) and place them in a `data/` directory at the repository root to reproduce data-processing steps locally.
 
-The full dataset used in this work is available from Zenodo at DOI: 10.5281/zenodo.17189995.
+## Repository contents
 
-Direct DOI link: [https://doi.org/10.5281/zenodo.17189995](https://doi.org/10.5281/zenodo.17189995)
+This repository snapshot focuses on the produced outputs and results. Notable directories and their purpose:
 
-Please consult the Zenodo record for the dataset license, metadata, and citation information. Download the dataset and place the extracted files into a `data/` directory at the repository root before running the notebooks.
-
-Example download using the DOI resolver (run locally):
-
-```bash
-# open the DOI landing page in a browser to download the dataset files
-xdg-open "https://doi.org/10.5281/zenodo.17189995"
-```
-
-Download the individual files (e.g., nodes.csv, edges.zip, etc.) from the Zenodo page linked above.
-
-## Repository structure (high-level)
-
-The repository snapshot contains the processed outputs, results and supporting artifacts produced during development. The interactive training notebooks used during development are not included in this public snapshot.
-
-- `results/` — Directory with produced artifacts and outputs:
-  - `models/` — Saved model checkpoint files (pretrained weights / saved checkpoints), for example: `DRUG_CAUSES_ADR.pt`, `DRUG_IN_PATH.pt`, `GENE_AFFECTS_DRUG.pt`, `GENE_IN_PATH.pt`, `VAR_ASSOC_DIS.pt`.
-  - `topk/` — CSV files with the top-k candidate lists per relation (e.g., `DRUG_CAUSES_ADR_top200_only.csv`).
+- `results/`
+  - `models/` — Saved model checkpoint files (pretrained weights / saved checkpoints), e.g. `DRUG_CAUSES_ADR.pt`, `DRUG_IN_PATH.pt`, `GENE_AFFECTS_DRUG.pt`, `GENE_IN_PATH.pt`, `VAR_ASSOC_DIS.pt`.
+  - `topk/` — CSV files with ranked candidate lists per relation (e.g., `DRUG_CAUSES_ADR_top200_only.csv`). Columns typically include subject, object, score, and rank.
   - `degree_features_train/` — Degree-based feature tensors used during training and evaluation (files ending in `.pt`).
   - `ego_graphs/` — PNG visualizations of ego-graphs for selected top predictions.
 
-Note: this repository includes the produced artifacts and results but does not include the original interactive training notebooks. If you need the notebooks or the full processing scripts, please contact the authors or check the development branch where they may be available.
+The repository contains the artifacts needed to reproduce evaluation and visualization steps; complete processing scripts and experimental notebooks used during development are not included in this snapshot.
 
-## Environment and Dependencies
+## Environment and dependencies
 
-This project was developed using Python 3.8 or newer, with the following key packages:
+Development and evaluation were performed using Python 3.8+ with a standard scientific stack. Key packages include:
 
 - numpy
 - pandas
@@ -58,82 +43,49 @@ This project was developed using Python 3.8 or newer, with the following key pac
 - scikit-learn
 - torch (PyTorch)
 - tqdm
+- (optional) torch-geometric for graph neural network experiments
 
-For graph neural network tasks, torch-geometric (PyG) and its dependencies were utilized, including CUDA-enabled builds for GPU acceleration.
-
-A virtual environment was created and packages were installed via pip, for example:
+To set up a minimal environment (example):
 
 ```bash
 python -m venv .venv
 source .venv/bin/activate
 pip install --upgrade pip
 pip install numpy pandas networkx matplotlib seaborn scikit-learn torch tqdm
-# torch-geometric was installed following the official instructions for the CUDA/PyTorch version
+# Install torch-geometric separately following compatibility instructions if GNN experiments are needed
 ```
 
-A `requirements.txt` file could be generated to lock exact package versions for reproducibility.
+A `requirements.txt` file can be added to pin exact versions for reproducibility.
 
-## Workflow Demonstrated
+## Reproducing results
 
-The project demonstrates a complete workflow for pharmacogenomic knowledge graph analysis:
+High-level steps to reproduce evaluation and visualization results locally:
 
-1. The dataset was downloaded from Zenodo (DOI: 10.5281/zenodo.17189995) and extracted into a `data/` directory at the repository root.
-2. A Python virtual environment was set up with the required dependencies as described above.
-3. The notebooks were executed in sequence:
+1. Download the Zenodo dataset and place files under `data/`.
+2. Install dependencies into a Python environment as shown above.
+3. Use the saved artifacts in `results/` (models, degree features) to run evaluation scripts (not included) or to inspect the included CSVs and visualizations.
 
-   - `processsing_data_v2.ipynb` — Processed the data to build the graph and generate training inputs, writing prepared files and tensors.
-   - `kg-pgx-training (2).ipynb` — Conducted training and evaluation, saving model weights under `results/models/`.
-   - `Topk_ego_graph.ipynb` — Generated top-k results and ego-graph visualizations, outputting images and CSVs to `results/ego_graphs/` and `results/topk/` respectively.
-
-Notebooks were executed interactively using JupyterLab, with commands such as:
-
-```bash
-pip install jupyterlab
-jupyter lab
-```
-
-For non-interactive execution, nbconvert was used, for example:
-
-```bash
-jupyter nbconvert --to notebook --execute "processsing_data_v2.ipynb" --output executed_processing.ipynb
-```
-
-## What is in `results/` (interpretation)
-
-- `results/models/*.pt` — Saved PyTorch model checkpoints for relation prediction / graph tasks. These are provided for demonstration and quick evaluation; re-training can be demonstrated by re-executing the training notebook.
-- `results/topk/*.csv` — Ranked candidates (top-k) produced for each evaluated relation. Each CSV lists subject, object, score, and rank (column names may vary by notebook implementation).
-- `results/ego_graphs/*.png` — Ego-graph visualizations for top predictions; useful for inspection and qualitative analysis.
-- `results/degree_features_train/*.pt` — Precomputed node-degree based features used as input to models (example file names: `ADR_deg3.pt`, `DRUG_deg3.pt`, etc.).
-
-## Potential Extensions
-
-The project could be extended by:
-
-- Generating a `requirements.txt` or `environment.yml` file with pinned versions for exact reproducibility.
-- Adding a `LICENSE` file indicating the intended license for the code in this repository (for example, MIT), while respecting the dataset license from Zenodo.
-- Providing a supplementary document describing the experimental setup, hyperparameters, evaluation metrics, and interpretation of the generated top-k lists and visualizations.
+If you need the original data-processing or training scripts, please contact the authors or check other project branches where development artifacts may be available.
 
 ## Citation
 
-If you use the dataset in this repository in your research, please cite the Zenodo dataset and this repository. The Zenodo dataset DOI is:
+If you use resources from this repository in your research, please cite the dataset and the work as follows:
 
-10.5281/zenodo.17189995
+- Dataset (Zenodo): [10.5281/zenodo.17189995](https://doi.org/10.5281/zenodo.17189995)
+- Preprint (bioRxiv): [10.1101/2025.09.24.25336269](https://doi.org/10.1101/2025.09.24.25336269)
 
-Suggested citation format for the dataset (adapt to your citation style):
+Suggested citation (adapt to your style):
 
-Author(s). Title. Zenodo. DOI:10.5281/zenodo.17189995
+Author(s). Title. bioRxiv. DOI:10.1101/2025.09.24.25336269
 
-Also cite the repository if appropriate:
+Repository:
 
-Faerque. pharmacogenomic-knowledge-graph. GitHub repository: [https://github.com/Faerque/pharmacogenomic-knowledge-graph](https://github.com/Faerque/pharmacogenomic-knowledge-graph)
+Faerque. pharmacogenomic-knowledge-graph. GitHub: [https://github.com/Faerque/pharmacogenomic-knowledge-graph](https://github.com/Faerque/pharmacogenomic-knowledge-graph)
 
-Preprint (bioRxiv): https://doi.org/10.1101/2025.09.24.25336269
+## Acknowledgements
 
-## Acknowledgements and notes
-
-- This README is based on the repository snapshot and the outputs saved in `results/` observed in the workspace. If additional scripts or helper functions exist elsewhere in the project, include them in the repository root or a `src/` directory and update this README accordingly.
-- Verify dataset license and attribution information on the Zenodo landing page before reuse.
+This README describes a snapshot of artifacts produced during the project. Verify dataset license and attribution on the Zenodo page before reuse. For questions about reproducing experiments or obtaining additional materials, contact the authors.
 
 ---
 
-Last updated: 2025-09-24
+Last updated: 2025-09-26
