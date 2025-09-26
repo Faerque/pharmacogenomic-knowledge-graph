@@ -7,6 +7,7 @@ A concise snapshot describing the pharmacogenomic knowledge graph (PGx-KG) artif
 This project integrates pharmacogenomic entities and relations into a knowledge graph to support relation prediction and exploratory analyses. The artifacts in this repository include saved model checkpoints, ranked candidate lists (top-k), degree-based feature tensors, and visualization outputs that demonstrate key findings.
 
 Key points:
+
 - Focus: pharmacogenomic relation prediction and ego-graph analysis.
 - Artifacts: pretrained model checkpoints, top-k candidate CSVs, degree/features tensors, and visualization images.
 - Publication: corresponding preprint describing the methods and results is available (see Citation section).
@@ -71,16 +72,28 @@ If you need the original data-processing or training scripts, please contact the
 
 If you use resources from this repository in your research, please cite the dataset and the work as follows:
 
-- Dataset (Zenodo): [10.5281/zenodo.17189995](https://doi.org/10.5281/zenodo.17189995)
+- Dataset (preferred): Faruk, M.O. (2025). Pharmacogenomic Knowledge Graph (PGx-KG): Processed Dataset for Link Prediction. Zenodo. [https://doi.org/10.5281/zenodo.17189995](https://doi.org/10.5281/zenodo.17189995)
 - Preprint (bioRxiv): [10.1101/2025.09.24.25336269](https://doi.org/10.1101/2025.09.24.25336269)
 
 Suggested citation (adapt to your style):
 
-Author(s). Title. bioRxiv. DOI:10.1101/2025.09.24.25336269
+Faruk, M.O. (2025). A large-scale pharmacogenomic knowledge graph for drug-gene-variant-disease discovery. bioRxiv. [https://doi.org/10.1101/2025.09.24.25336269](https://doi.org/10.1101/2025.09.24.25336269)
 
 Repository:
 
 Faerque. pharmacogenomic-knowledge-graph. GitHub: [https://github.com/Faerque/pharmacogenomic-knowledge-graph](https://github.com/Faerque/pharmacogenomic-knowledge-graph)
+
+Recommended formatted references
+
+APA style
+
+- Dataset: Faruk, M.O. (2025). Pharmacogenomic Knowledge Graph (PGx-KG): Processed Dataset for Link Prediction. Zenodo. [https://doi.org/10.5281/zenodo.17189995](https://doi.org/10.5281/zenodo.17189995)
+- Preprint: Faruk, M.O. (2025). A large-scale pharmacogenomic knowledge graph for drug-gene-variant-disease discovery. bioRxiv. [https://doi.org/10.1101/2025.09.24.25336269](https://doi.org/10.1101/2025.09.24.25336269)
+
+IEEE style
+
+- Dataset: M. O. Faruk, "Pharmacogenomic Knowledge Graph (PGx-KG): Processed Dataset for Link Prediction," Zenodo, 2025. DOI: 10.5281/zenodo.17189995.
+- Preprint: M. O. Faruk, "A large-scale pharmacogenomic knowledge graph for drug-gene-variant-disease discovery," bioRxiv, 2025. DOI: 10.1101/2025.09.24.25336269.
 
 ## Acknowledgements
 
