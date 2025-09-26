@@ -97,7 +97,7 @@ IEEE style
 
 ## Acknowledgements
 
-This README describes a snapshot of artifacts produced during the project. Verify dataset license and attribution on the Zenodo page before reuse. For questions about reproducing experiments or obtaining additional materials, contact the authors.
+This README provides a static snapshot of the artifacts generated during this study. Users are advised to consult the Zenodo landing page to confirm dataset licensing and attribution information prior to reuse. Requests for additional materials, clarifications on reproducibility, or correspondence regarding the study should be directed to the corresponding author.
 
 ---
 
